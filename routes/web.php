@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('Home');
-});
+})->name('home');
 
 Route::get('/car-info/{id}', function($id) {
     $cars = DB::select("SELECT * FROM cars WHERE Id = :id LIMIT 1", ['id' => $id]);
@@ -27,17 +27,17 @@ Route::get('/edit-car/{id}', function($id) {
     $cars = DB::select("SELECT * FROM cars WHERE Id = :id LIMIT 1", ['id' => $id]);
     if (count($cars) == 0) abort(404);
     return view('edit-car', ['car' => $cars[0]]);
-})->middleware(['auth'])->name('editCar');;
+})->middleware(['auth']);
 
 Route::get('/edit-car', function() {
     return view('edit-car', ['car' => false]);
-})->middleware(['auth'])->name('createCar');
+})->middleware(['auth']);
 
 Route::get('/delete-car/{id}', function($id) {
     $cars = DB::select("SELECT * FROM cars WHERE Id = :id LIMIT 1", ['id' => $id]);
     if (count($cars) == 0) abort(404);
     return view('delete-car', ['car' => $cars[0]]);
-})->middleware(['auth'])->name('deleteCar');
+})->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -45,10 +45,10 @@ Route::get('/dashboard', function () {
 
 Route::post('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth']);
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth/register');
 });
 
 require __DIR__.'/auth.php';

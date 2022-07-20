@@ -5,7 +5,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>        
+    <body>
+        <?php include __DIR__."/components/header.php" ?>        
         <div class="container bg-light">
             <h1><?php echo $car->ProductionYear." ".$car->Make." ".$car->Model; ?></h1>
             <table class="table table-sm">
@@ -38,5 +39,6 @@
             </table>
             <a href='/'><button type='button'>Back</button></a>
         </div>
+        <?php include __DIR__."/components/footer.php" ?>
     </body>
 </html>
